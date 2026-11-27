@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
+<p class="p1">&lt;title&gt;HeltarChat Developer Course&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green: #008069;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green-dark: #006b57;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg: #f5f7f6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--card: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text: #1f2a27;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--muted: #5d6b67;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--border: #dfe6e3;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { box-sizing: border-box; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--bg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--text);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 2rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>header p { margin: 0; opacity: 0.9; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-wrap {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 960px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 1.25rem auto 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-label { font-size: 0.9rem; margin-bottom: 0.4rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-bar {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: rgba(255,255,255,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.progress-fill {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 0%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: width 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>main {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 960px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav.modules {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav.modules a {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green-dark);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.4rem 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>nav.modules a:hover { border-color: var(--green); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>section.module {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>section.module h2 {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--green-dark);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 1.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.goal {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e8f5f1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-left: 4px solid var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.75rem 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>h3 { font-size: 1.05rem; margin: 1.25rem 0 0.4rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>ul { padding-left: 1.25rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>li { margin-bottom: 0.35rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>code {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #eef2f1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.1rem 0.35rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.9em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: ui-monospace, SFMono-Regular, Menlo, monospace;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>pre {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #1f2a27;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #e6f0ec;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow-x: auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.88rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>table {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 0.75rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.92rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>th, td {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.55rem 0.6rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-bottom: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>vertical-align: top;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>th { background: #f0f5f3; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.exercise {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #fff9e6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #f1e3a6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.exercise label {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 0.4rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.exercise input { margin-top: 0.35rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.done-badge {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--green);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.15rem 0.6rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 999px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-left: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>vertical-align: middle;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.done .done-badge { display: inline-block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.quiz { margin-top: 2rem; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.quiz details {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.75rem 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 0.6rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.quiz summary { cursor: pointer; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.quiz p { margin: 0.5rem 0 0; color: var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.reset {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid var(--border);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 0.4rem 0.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>footer {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: var(--muted);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 0.85rem;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 2rem 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;HeltarChat Developer Course&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;API reference, guides and integrations in six modules&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="progress-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="progress-label"&gt;&lt;span id="progressText"&gt;0 of 6 modules complete&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="progress-bar"&gt;&lt;div class="progress-fill" id="progressFill"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;nav class="modules"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m1"&gt;1. Foundations&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m2"&gt;2. Messaging &amp;amp; Contacts&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m3"&gt;3. Campaigns &amp;amp; Templates&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m4"&gt;4. Webhooks&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m5"&gt;5. Guides in Practice&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#m6"&gt;6. Integrations&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;a href="#quiz"&gt;Final Assessment&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m1" data-module="1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 1: Foundations and Authentication &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Make your first authenticated API call.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Core concepts&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Base URL: &lt;code&gt;https://api.heltar.com/v1&lt;/code&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Every success returns &lt;code&gt;message&lt;/code&gt; and &lt;code&gt;data&lt;/code&gt;. Errors return &lt;code&gt;errorType&lt;/code&gt;, &lt;code&gt;errorMessage&lt;/code&gt;, &lt;code&gt;errorsValidation&lt;/code&gt;, &lt;code&gt;errorRaw&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Phone numbers use international format without &lt;code&gt;+&lt;/code&gt;, for example &lt;code&gt;919876543210&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Rate limits: list reads 600 per 15 min, analytics 60 per 15 min, key management 20 per 15 min. Sends are not limited this way.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Authentication&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Create a key under &lt;strong&gt;Settings → API Key / Dev tools&lt;/strong&gt;. The full key is shown only once.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Send it as &lt;code&gt;Authorization: Bearer hk_live_…&lt;/code&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Scopes are &lt;code&gt;resource:action&lt;/code&gt;, such as &lt;code&gt;messages:write&lt;/code&gt;. A call outside the key's scope returns &lt;code&gt;403&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Presets: &lt;strong&gt;Full access&lt;/strong&gt; and &lt;strong&gt;Read-only&lt;/strong&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;pre&gt;&lt;code&gt;curl -X GET "https://api.heltar.com/v1/clients?limit=5" \</p>
+<p class="p1"><span class="Apple-converted-space">  </span>-H "Authorization: Bearer hk_live_xxxxxxxx"&lt;/code&gt;&lt;/pre&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Practice exercises&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="1-1"&gt; Create a read-only key.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="1-2"&gt; Call &lt;code&gt;GET /v1/clients?limit=5&lt;/code&gt; and confirm a 200 response.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="1-3"&gt; Call &lt;code&gt;POST /v1/messages/send&lt;/code&gt; with that key and confirm you get &lt;code&gt;403&lt;/code&gt;.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/api"&gt;API Reference&lt;/a&gt;, &lt;a href="/docs/api/authentication"&gt;Authentication&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m2" data-module="2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 2: Messaging and Contacts API &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Send every message type and manage contacts programmatically.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Sending messages&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Supported &lt;code&gt;messageType&lt;/code&gt; values: &lt;code&gt;text&lt;/code&gt;, &lt;code&gt;media&lt;/code&gt;, &lt;code&gt;template&lt;/code&gt;, &lt;code&gt;interactive&lt;/code&gt;, &lt;code&gt;contacts&lt;/code&gt;, &lt;code&gt;location&lt;/code&gt;, &lt;code&gt;reaction&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Templates are required outside the 24-hour customer service window. Variables map to &lt;code&gt;{{1}}&lt;/code&gt;, &lt;code&gt;{{2}}&lt;/code&gt; by position.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Read &lt;code&gt;data.success&lt;/code&gt; and &lt;code&gt;data.fail&lt;/code&gt; carefully. Both are keyed by array position, so match results back to what you sent.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Use &lt;code&gt;refId&lt;/code&gt; to correlate your own IDs.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Media workflow&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ol&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;code&gt;GET /v1/messages/presigned-url?file_name=…&amp;amp;file_type=…&lt;/code&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;code&gt;PUT&lt;/code&gt; the file to &lt;code&gt;signedRequest&lt;/code&gt; (expires after one hour).&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Send the message with the returned &lt;code&gt;url&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ol&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Contacts&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;code&gt;POST /v1/clients&lt;/code&gt; creates or upserts in bulk. Attributes merge key by key.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Attribute types: &lt;code&gt;text&lt;/code&gt;, &lt;code&gt;numerical&lt;/code&gt;, &lt;code&gt;dropdown&lt;/code&gt;, &lt;code&gt;tags&lt;/code&gt;. Define non-text types first with &lt;code&gt;POST /v1/business/attributes&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Pagination is keyset-based: pass &lt;code&gt;nextCursor&lt;/code&gt; back as &lt;code&gt;cursor&lt;/code&gt; until it is &lt;code&gt;null&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Practice exercises&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="2-1"&gt; Import 20 contacts with a &lt;code&gt;tier&lt;/code&gt; dropdown attribute (silver, gold).&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="2-2"&gt; Send each contact a template with a script.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="2-3"&gt; Print the successes and failures from the response.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/api/messages"&gt;Messages&lt;/a&gt;, &lt;a href="/docs/api/contacts"&gt;Contacts&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m3" data-module="3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 3: Campaigns, Templates and Scheduling &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Run bulk campaigns reliably and manage the template lifecycle.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Templates&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Categories: &lt;code&gt;UTILITY&lt;/code&gt;, &lt;code&gt;MARKETING&lt;/code&gt;, &lt;code&gt;AUTHENTICATION&lt;/code&gt;. Components must include &lt;code&gt;BODY&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Statuses: &lt;code&gt;PENDING&lt;/code&gt;, &lt;code&gt;APPROVED&lt;/code&gt;, &lt;code&gt;REJECTED&lt;/code&gt;, &lt;code&gt;PAUSED&lt;/code&gt;, &lt;code&gt;DISABLED&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Editing replaces the whole component list, and approved templates go back to review.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Pause all marketing sends with &lt;code&gt;PUT /v1/business/pause-marketing-templates&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Campaigns&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Small batches go in &lt;code&gt;messages&lt;/code&gt;. Large ones use an NDJSON file, one recipient per line, referenced by &lt;code&gt;finalPayloadFileUrl&lt;/code&gt; with &lt;code&gt;recipientCount&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Track counts with &lt;code&gt;GET /v1/campaigns/get-one/:id&lt;/code&gt;. Per-recipient status is at &lt;code&gt;GET /v1/campaigns/:id&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Scheduling&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Schedule a message, campaign or nudge with a Unix timestamp no more than two years ahead.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Scheduling a nudge cancels pending nudges for the same contact and bot.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Practice exercises&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="3-1"&gt; Create a UTILITY template and wait for approval.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="3-2"&gt; Schedule a campaign 10 minutes ahead to two test numbers.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="3-3"&gt; Poll &lt;code&gt;get-one&lt;/code&gt; until &lt;code&gt;statsSent&lt;/code&gt; matches &lt;code&gt;statsTotal&lt;/code&gt;.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/api/templates"&gt;Templates&lt;/a&gt;, &lt;a href="/docs/api/campaigns"&gt;Campaigns&lt;/a&gt;, &lt;a href="/docs/api/schedule"&gt;Schedule&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 4 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m4" data-module="4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 4: Webhooks and Real-Time Events &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Receive and process events reliably.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Setup&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Configure URLs with &lt;code&gt;POST /v1/business/webhook-url&lt;/code&gt;. Each URL subscribes to one field type.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Use &lt;code&gt;headers&lt;/code&gt; to send a static shared secret, since there is no signature header.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Payload discrimination&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;th&gt;Event&lt;/th&gt;&lt;th&gt;Where it arrives&lt;/th&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Inbound customer message&lt;/td&gt;&lt;td&gt;&lt;code&gt;value.messages[]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Status change (sent, delivered, read, failed)&lt;/td&gt;&lt;td&gt;&lt;code&gt;value.statuses[]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Payment&lt;/td&gt;&lt;td&gt;Status with &lt;code&gt;"type": "payment"&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Call event&lt;/td&gt;&lt;td&gt;&lt;code&gt;"field": "calls"&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/table&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Reliability rules&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Respond &lt;code&gt;200&lt;/code&gt; within 10 seconds. Process asynchronously.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Only network errors, timeouts and &lt;code&gt;5xx&lt;/code&gt; are retried, up to 5 times over roughly 4 to 5 hours. Sort by payload timestamps, not arrival time.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Deduplicate on &lt;code&gt;(wamid, status)&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;After about 100 consecutive failures the webhook is disabled. Re-enable it with the configure endpoint.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Practice exercises&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="4-1"&gt; Expose a local server with ngrok and subscribe to &lt;code&gt;metaWebhooks&lt;/code&gt;.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="4-2"&gt; Send yourself a text and log the inbound message.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="4-3"&gt; Log the &lt;code&gt;delivered&lt;/code&gt; and &lt;code&gt;read&lt;/code&gt; statuses that follow.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/api/webhooks"&gt;Webhooks&lt;/a&gt;, &lt;a href="/docs/guides/custom-data-in-webhooks"&gt;Custom Data in Webhooks&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 5 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m5" data-module="5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 5: Guides in Practice &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Apply the three guides to real workflows.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Custom data in webhooks&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Attach &lt;code&gt;integrations: [{ name: "metaCustomFieldHook", customField: {...} }]&lt;/code&gt; to a template send.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;The returned &lt;code&gt;customField&lt;/code&gt; lets you map every receipt back to your own order ID.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Receiving media&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Inbound media arrives as an ID. Fetch &lt;code&gt;GET /v1/messages?wamid=…&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;&lt;code&gt;awsLink&lt;/code&gt; may be empty for a few seconds. Retry about three times at five-second intervals.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Custom domain for link tracker&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Use an unused subdomain such as &lt;code&gt;links.yourbrand.com&lt;/code&gt;. Never the root domain.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Add the verification CNAME exactly as sent. Don't duplicate your domain in the Name field.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Set Cloudflare records to DNS only. Keep the verification record forever, because renewal depends on it.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Capstone&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="5-1"&gt; Send an order-confirmation template with an order ID in &lt;code&gt;customField&lt;/code&gt;, using a branded tracking link.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="5-2"&gt; Use status webhooks to update your own record when the message is read or clicked.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/guides"&gt;Guides&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- MODULE 6 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module" id="m6" data-module="6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Module 6: Integrations &lt;span class="done-badge"&gt;Complete&lt;/span&gt;&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="goal"&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Connect third-party platforms and know which webhook field each uses.&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;th&gt;Integration&lt;/th&gt;&lt;th&gt;What it does&lt;/th&gt;&lt;th&gt;Key webhook field&lt;/th&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;WebEngage&lt;/td&gt;&lt;td&gt;Journeys send WhatsApp; status returns&lt;/td&gt;&lt;td&gt;&lt;code&gt;webEngageStatus&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;CleverTap&lt;/td&gt;&lt;td&gt;Campaigns send WhatsApp; templates import&lt;/td&gt;&lt;td&gt;&lt;code&gt;cleverTapStatus&lt;/code&gt;, &lt;code&gt;cleverTapMessages&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;MoEngage&lt;/td&gt;&lt;td&gt;Campaigns, journeys and replies&lt;/td&gt;&lt;td&gt;&lt;code&gt;moEngage&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Web chat widget&lt;/td&gt;&lt;td&gt;In-page chat in the same inbox&lt;/td&gt;&lt;td&gt;Inbox (no webhook)&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Embedded agent chat&lt;/td&gt;&lt;td&gt;Agents chat with a lead inside your CRM&lt;/td&gt;&lt;td&gt;None&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;tr&gt;&lt;td&gt;Amazon S3 export&lt;/td&gt;&lt;td&gt;CSV of status changes every 10 minutes&lt;/td&gt;&lt;td&gt;None&lt;/td&gt;&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/table&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h3&gt;Key concepts&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;The embed &lt;code&gt;embedUrl&lt;/code&gt; is single-use and expires after 24 hours. Never put the API key in the browser.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;Web widget identity verification signs &lt;code&gt;visitor.id&lt;/code&gt; on your server with HMAC-SHA256.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;For S3, treat the table as append-only and keep the row with the newest &lt;code&gt;updated_at&lt;/code&gt; per &lt;code&gt;message_id&lt;/code&gt;.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ul&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="exercise"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;strong&gt;Practice exercises&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="6-1"&gt; Set up one integration against a test account.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="6-2"&gt; Send one message through it.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;&lt;input type="checkbox" data-ex="6-3"&gt; Write a short paragraph on which webhook field carries the status back and why.&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a href="/docs/integrations"&gt;Integrations&lt;/a&gt;, &lt;a href="/docs/integrations/web-widget"&gt;Web chat widget&lt;/a&gt;, &lt;a href="/docs/integrations/embedded-chat"&gt;Embedded agent chat&lt;/a&gt;, &lt;a href="/docs/integrations/amazon-s3-export"&gt;Amazon S3 export&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- FINAL ASSESSMENT --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;section class="module quiz" id="quiz"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h2&gt;Final Assessment&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Try each question first, then open the answer.&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;1. Why does a 200 response to &lt;code&gt;POST /v1/messages/send&lt;/code&gt; not guarantee delivery?&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;The 200 means the message was accepted. Delivery is reported later through &lt;code&gt;sent&lt;/code&gt;, &lt;code&gt;delivered&lt;/code&gt;, &lt;code&gt;read&lt;/code&gt; and &lt;code&gt;failed&lt;/code&gt; status webhooks.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;2. What happens after roughly 100 consecutive failed webhook deliveries?&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;The webhook is disabled automatically and you are notified. Re-enable it with the configure endpoint once your endpoint is healthy.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;3. Which field tells you whether a webhook payload is a customer message or a status update?&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;Look at which array is present: &lt;code&gt;value.messages[]&lt;/code&gt; for inbound customer messages, &lt;code&gt;value.statuses[]&lt;/code&gt; for status updates.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;4. Why must the web widget signature be computed on the server?&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;The HMAC secret must stay private. If it is computed in the browser, anyone can read it and forge signatures for any visitor id.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;details&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;summary&gt;5. Why must the Cloudflare verification record be DNS only?&lt;/summary&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;A proxied (orange cloud) record hides the real value, which blocks both certificate verification and the final link setup.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/details&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="reset" id="resetBtn"&gt;Reset progress&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;footer&gt;Built for learning the HeltarChat API. Progress is saved in this browser only.&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const modules = document.querySelectorAll('section.module[data-module]');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const checkboxes = document.querySelectorAll('input[data-ex]');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const STORAGE_KEY = 'heltarchat-course-progress';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function loadState() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return {};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function saveState(state) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>localStorage.setItem(STORAGE_KEY, JSON.stringify(state));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch (e) {}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function render() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const state = loadState();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let completed = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>checkboxes.forEach(cb =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>cb.checked = !!state[cb.dataset.ex];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>modules.forEach(sec =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const id = sec.dataset.module;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const boxes = sec.querySelectorAll('input[data-ex]');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const allDone = boxes.length &gt; 0 &amp;&amp; [...boxes].every(b =&gt; b.checked);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>sec.classList.toggle('done', allDone);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (allDone) completed++;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pct = Math.round((completed / modules.length) * 100);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('progressFill').style.width = pct + '%';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('progressText').textContent =</p>
+<p class="p1"><span class="Apple-converted-space">      </span>completed + ' of ' + modules.length + ' modules complete';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>checkboxes.forEach(cb =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cb.addEventListener('change', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const state = loadState();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>state[cb.dataset.ex] = cb.checked;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveState(state);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('resetBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (confirm('Clear all progress?')) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>saveState({});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>render();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>render();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
