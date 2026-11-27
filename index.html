@@ -98,6 +98,15 @@
   .pager button:hover:not(:disabled) { background: var(--green); color: #fff; }
   .pager button:disabled { opacity: 0.35; cursor: default; }
 
+  .diagram { margin: 1.25rem 0; text-align: center; }
+  .diagram svg { width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto; }
+  .diagram .controls { margin-top: 0.5rem; }
+  .diagram button {
+    background: var(--card); border: 1px solid var(--green); color: var(--green-dark);
+    padding: 0.35rem 0.9rem; border-radius: 6px; font-size: 0.85rem; cursor: pointer; margin: 0 0.25rem;
+  }
+  .diagram button:hover { background: var(--green); color: #fff; }
+
   @media (max-width: 760px) {
     .layout { grid-template-columns: 1fr; padding: 1rem; }
     nav.menu { position: static; }
@@ -204,6 +213,37 @@
 
       <h3>Rate limits: don't send too much too fast</h3>
       <p>HeltarChat limits how many requests you can make in a short time. If you go over, you'll get an error. The fix is to wait briefly, then try again.</p>
+
+      <h3>How a request works</h3>
+      <div class="diagram">
+        <svg viewBox="0 0 600 230" role="img" aria-label="Your software sends a request with the API key to HeltarChat, and HeltarChat sends a response back">
+          <defs>
+            <marker id="ah1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#5d6b67"/>
+            </marker>
+          </defs>
+          <rect x="20" y="75" width="150" height="80" rx="12" fill="#eef6f3" stroke="#008069" stroke-width="2"/>
+          <text x="95" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">Your software</text>
+          <text x="95" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">sends the request</text>
+          <rect x="425" y="75" width="155" height="80" rx="12" fill="#eef6f3" stroke="#008069" stroke-width="2"/>
+          <text x="502" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">HeltarChat</text>
+          <text x="502" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">checks the key</text>
+          <line x1="172" y1="100" x2="422" y2="100" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah1)"/>
+          <text x="297" y="88" text-anchor="middle" font-size="13" fill="#1f2a27">Request + API key</text>
+          <line x1="422" y1="140" x2="172" y2="140" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah1)"/>
+          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">Response</text>
+          <circle r="7" fill="#008069">
+            <animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/>
+          </circle>
+          <circle r="7" fill="#e07b00">
+            <animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/>
+          </circle>
+        </svg>
+        <div class="controls">
+          <button onclick="this.closest('.diagram').querySelector('svg').pauseAnimations()">Pause</button>
+          <button onclick="this.closest('.diagram').querySelector('svg').unpauseAnimations()">Play</button>
+        </div>
+      </div>
 
       <h3>Step by step: create an API key</h3>
       <ol class="steps">
@@ -340,6 +380,37 @@
         <p><strong>Reply quickly.</strong> Your endpoint must answer with HTTP 200 within 10 seconds. If it takes longer, do the heavy work afterwards.</p>
         <p><strong>Retries.</strong> If your endpoint fails, HeltarChat retries up to 5 times.</p>
         <p><strong>Disabling.</strong> After about 100 failures in a row, the webhook is switched off. You'll need to fix it and turn it back on.</p>
+      </div>
+
+      <h3>How a webhook arrives</h3>
+      <div class="diagram">
+        <svg viewBox="0 0 600 230" role="img" aria-label="HeltarChat sends an event to your endpoint, and your endpoint replies 200 OK">
+          <defs>
+            <marker id="ah4" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0,0 L10,5 L0,10 Z" fill="#5d6b67"/>
+            </marker>
+          </defs>
+          <rect x="20" y="75" width="150" height="80" rx="12" fill="#eef6f3" stroke="#008069" stroke-width="2"/>
+          <text x="95" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">HeltarChat</text>
+          <text x="95" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">something happens</text>
+          <rect x="425" y="75" width="155" height="80" rx="12" fill="#eef6f3" stroke="#008069" stroke-width="2"/>
+          <text x="502" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">Your endpoint</text>
+          <text x="502" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">your web address</text>
+          <line x1="172" y1="100" x2="422" y2="100" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah4)"/>
+          <text x="297" y="88" text-anchor="middle" font-size="13" fill="#1f2a27">Event (webhook)</text>
+          <line x1="422" y1="140" x2="172" y2="140" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah4)"/>
+          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">200 OK within 10 seconds</text>
+          <circle r="7" fill="#008069">
+            <animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/>
+          </circle>
+          <circle r="7" fill="#e07b00">
+            <animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/>
+          </circle>
+        </svg>
+        <div class="controls">
+          <button onclick="this.closest('.diagram').querySelector('svg').pauseAnimations()">Pause</button>
+          <button onclick="this.closest('.diagram').querySelector('svg').unpauseAnimations()">Play</button>
+        </div>
       </div>
 
       <h3>Step by step: test your webhook</h3>
@@ -492,8 +563,8 @@
       const allChecked = boxes.length > 0 && Array.from(boxes).every(b => b.checked);
       boxes.forEach((b, i) => { b.checked = !!(state[id] && state[id][i]); });
       page.classList.toggle("complete", allChecked);
-      const menuLink = document.querySelector(`nav.menu a[data-page="${id}"] .tick`);
-      if (menuLink) menuLink.textContent = allChecked ? "✓" : "";
+      const menuTick = document.querySelector(`nav.menu a[data-page="${id}"] .tick`);
+      if (menuTick) menuTick.textContent = allChecked ? "✓" : "";
       if (allChecked) completed++;
     });
 
@@ -518,7 +589,6 @@
     return pageIds.includes(id) ? id : pageIds[0];
   }
 
-  // Previous / Next buttons
   pages.forEach((page, i) => {
     const next = page.querySelector("[data-next]");
     const prev = page.querySelector("[data-prev]");
@@ -526,7 +596,6 @@
     if (prev) prev.addEventListener("click", () => showPage(pageIds[i - 1], true));
   });
 
-  // Checkboxes save progress
   document.querySelectorAll("input.ex").forEach(box => {
     box.addEventListener("change", () => {
       const state = loadState();
