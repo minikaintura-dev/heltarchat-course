@@ -20,479 +20,215 @@
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.7;
   }
-  header {
-    background: var(--green);
-    color: #fff;
-    padding: 2rem 1.5rem;
-  }
+  header { background: var(--green); color: #fff; padding: 2rem 1.5rem; }
   header h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }
   header p { margin: 0; opacity: 0.9; }
-  .progress-wrap {
-    max-width: 960px;
-    margin: 1.25rem auto 0;
-  }
+  .progress-wrap { max-width: 960px; margin: 1.25rem auto 0; }
   .progress-label { font-size: 0.9rem; margin-bottom: 0.4rem; }
-  .progress-bar {
-    height: 10px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 999px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #fff;
-    transition: width 0.3s ease;
-  }
-  main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
-  nav.modules {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
+  .progress-bar { height: 10px; background: rgba(255,255,255,0.3); border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0%; background: #fff; transition: width 0.3s ease; }
+  main { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+  nav.modules { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
   nav.modules a {
-    text-decoration: none;
-    color: var(--green-dark);
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem; background: var(--card); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--green-dark); text-decoration: none; font-size: 0.9rem;
   }
-  nav.modules a:hover { border-color: var(--green); }
-  section.module {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+  nav.modules a:hover { background: var(--green); color: #fff; }
+  section.module, section.glossary, section.assessment {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.5rem; margin-bottom: 1.5rem;
   }
-  section.module h2 {
-    margin-top: 0;
-    color: var(--green-dark);
-    font-size: 1.4rem;
+  section.module.complete { border-color: var(--green); }
+  .module-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  section h2 { margin: 0; font-size: 1.35rem; }
+  .badge {
+    display: none; background: var(--green); color: #fff; font-size: 0.8rem;
+    padding: 0.2rem 0.7rem; border-radius: 999px;
   }
-  .goal {
-    background: #e8f5f1;
-    border-left: 4px solid var(--green);
-    padding: 0.75rem 1rem;
-    border-radius: 6px;
-    margin-bottom: 1rem;
+  section.module.complete .badge { display: inline-block; }
+  h3 { font-size: 1.05rem; margin: 1.5rem 0 0.4rem; color: var(--green-dark); }
+  .plain {
+    background: #eef6f3; border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.75rem 0;
   }
-  h3 { font-size: 1.05rem; margin: 1.25rem 0 0.4rem; }
-  ul { padding-left: 1.25rem; }
-  li { margin-bottom: 0.35rem; }
+  .plain strong { color: var(--green-dark); }
+  .steps { counter-reset: step; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: step; position: relative; padding-left: 2.2rem; margin-bottom: 0.6rem; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0; width: 1.6rem; height: 1.6rem;
+    background: var(--green); color: #fff; border-radius: 50%; text-align: center;
+    line-height: 1.6rem; font-size: 0.85rem; font-weight: 600;
+  }
   code {
-    background: #eef2f1;
-    padding: 0.1rem 0.35rem;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: #eef3f1; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.9em;
   }
   pre {
-    background: #1f2a27;
-    color: #e6f0ec;
-    padding: 1rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-size: 0.88rem;
+    background: #1f2a27; color: #e8f1ee; padding: 1rem; border-radius: 8px;
+    overflow-x: auto; font-size: 0.85rem;
   }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0.75rem 0;
-    font-size: 0.92rem;
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: 0.35rem; }
+  .practice {
+    background: #f1faf7; border-left: 4px solid var(--green); padding: 1rem 1.25rem;
+    border-radius: 6px; margin-top: 1rem;
   }
-  th, td {
-    text-align: left;
-    padding: 0.55rem 0.6rem;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
-  th { background: #f0f5f3; }
-  .exercise {
-    background: #fff9e6;
-    border: 1px solid #f1e3a6;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-  }
-  .exercise label {
-    display: flex;
-    gap: 0.5rem;
-    align-items: flex-start;
-    cursor: pointer;
-    margin-bottom: 0.4rem;
-  }
-  .exercise input { margin-top: 0.35rem; }
-  .done-badge {
-    display: inline-block;
-    font-size: 0.8rem;
-    background: var(--green);
-    color: #fff;
-    padding: 0.15rem 0.6rem;
-    border-radius: 999px;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-    display: none;
-  }
-  .done .done-badge { display: inline-block; }
-  .quiz { margin-top: 2rem; }
-  .quiz details {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.6rem;
-  }
-  .quiz summary { cursor: pointer; font-weight: 600; }
-  .quiz p { margin: 0.5rem 0 0; color: var(--muted); }
-  .reset {
-    margin-top: 1rem;
-    background: none;
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.8rem;
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--muted);
-  }
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
-    padding: 2rem 1rem;
-  }
+  .practice h3 { margin-top: 0; }
+  .practice label { display: flex; gap: 0.6rem; align-items: flex-start; margin: 0.5rem 0; cursor: pointer; }
+  .practice input { margin-top: 0.45rem; }
+  .docs-link { font-size: 0.9rem; }
+  .docs-link a { color: var(--green-dark); }
+  .glossary dl { margin: 0; }
+  .glossary dt { font-weight: 600; color: var(--green-dark); margin-top: 0.8rem; }
+  .glossary dd { margin: 0.1rem 0 0 0; }
+  details { margin: 0.6rem 0; }
+  summary { cursor: pointer; font-weight: 600; }
+  .muted { color: var(--muted); font-size: 0.9rem; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>HeltarChat Developer Course</h1>
-  <p>API reference, guides and integrations in six modules</p>
+  <p>Learn how to connect your own software to HeltarChat, one step at a time. No prior experience needed.</p>
   <div class="progress-wrap">
-    <div class="progress-label"><span id="progressText">0 of 6 modules complete</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label"><span id="progress-text">0 of 6 modules complete</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
   </div>
 </header>
 
 <main>
   <nav class="modules">
+    <a href="#start">Start here</a>
+    <a href="#glossary">Glossary</a>
     <a href="#m1">1. Foundations</a>
-    <a href="#m2">2. Messaging &amp; Contacts</a>
-    <a href="#m3">3. Campaigns &amp; Templates</a>
+    <a href="#m2">2. Messages &amp; Contacts</a>
+    <a href="#m3">3. Campaigns</a>
     <a href="#m4">4. Webhooks</a>
-    <a href="#m5">5. Guides in Practice</a>
+    <a href="#m5">5. Guides</a>
     <a href="#m6">6. Integrations</a>
-    <a href="#quiz">Final Assessment</a>
+    <a href="#assessment">Assessment</a>
   </nav>
 
+  <!-- START HERE -->
+  <section id="start">
+    <h2>Start here</h2>
+    <div class="plain">
+      <p><strong>What is HeltarChat?</strong> HeltarChat sends and receives WhatsApp messages for businesses. This course teaches you how your own software can talk to HeltarChat, so messages, contacts, and campaigns can happen automatically.</p>
+      <p><strong>What is an API?</strong> An API (Application Programming Interface) is a set of rules that lets one program ask another program to do something. Think of it like a restaurant menu: you pick an item, the kitchen prepares it, and you get it back. You never need to see the kitchen.</p>
+      <p><strong>What do I need?</strong> A HeltarChat account, access to its dashboard, and a basic idea of how to copy and paste text. Some modules involve a developer; the notes say so when that applies.</p>
+    </div>
+    <p class="muted">Work through the modules in order. Each one has a plain explanation, step-by-step tasks, and practice items to tick off.</p>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="glossary" id="glossary">
+    <h2>Glossary: words you'll see</h2>
+    <p class="muted">Come back here any time a term is unfamiliar.</p>
+    <dl>
+      <dt>API</dt>
+      <dd>A set of rules that lets one program request actions or information from another.</dd>
+      <dt>API key</dt>
+      <dd>A long secret code that identifies your software to HeltarChat. Treat it like a password: never share it or put it in a public web page.</dd>
+      <dt>Bearer token</dt>
+      <dd>The way you attach your API key to a request. It's sent in a header line that begins with the word <code>Authorization</code>.</dd>
+      <dt>Endpoint</dt>
+      <dd>A specific web address for one action, such as sending a message. Example: <code>https://api.heltar.com/v1</code> plus a path.</dd>
+      <dt>Scope</dt>
+      <dd>A permission attached to an API key. A read-only key can look things up but cannot change anything.</dd>
+      <dt>Payload</dt>
+      <dd>The data inside a request or message: the recipient, the text, and so on.</dd>
+      <dt>JSON</dt>
+      <dd>A common format for structured data, written as labels and values in curly braces. Most API data uses it.</dd>
+      <dt>Webhook</dt>
+      <dd>A notification HeltarChat sends <em>to</em> your software when something happens, such as a new incoming message. It's like a doorbell instead of you checking the door every few seconds.</dd>
+      <dt>WAMID</dt>
+      <dd>A unique ID WhatsApp gives each message. You use it to look up a specific message later.</dd>
+      <dt>Template</dt>
+      <dd>A pre-approved message format used for business campaigns. WhatsApp requires approval before a template can be sent.</dd>
+      <dt>Campaign</dt>
+      <dd>A message sent to a list of people, usually as a single batch.</dd>
+      <dt>Webhook status vs. message</dt>
+      <dd>A <em>message</em> is something a customer said to you. A <em>status</em> is an update on something you sent, such as "delivered" or "read".</dd>
+      <dt>HMAC</dt>
+      <dd>A fingerprint made from your secret key and some data. It proves a request really came from you. It must be created on a server, because a browser would expose your secret.</dd>
+      <dt>CNAME</dt>
+      <dd>A DNS record that points one domain name to another. Used here to verify that you own a domain.</dd>
+      <dt>DNS only</dt>
+      <dd>A setting on a DNS record that stops a service such as Cloudflare from hiding the real record. Verification fails if it's turned off.</dd>
+      <dt>Pagination</dt>
+      <dd>Splitting a long list into pages. You request one page, then use a cursor (a bookmark) to get the next.</dd>
+    </dl>
+  </section>
+
   <!-- MODULE 1 -->
-  <section class="module" id="m1" data-module="1">
-    <h2>Module 1: Foundations and Authentication <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Make your first authenticated API call.</div>
-
-    <h3>Core concepts</h3>
-    <ul>
-      <li>Base URL: <code>https://api.heltar.com/v1</code></li>
-      <li>Every success returns <code>message</code> and <code>data</code>. Errors return <code>errorType</code>, <code>errorMessage</code>, <code>errorsValidation</code>, <code>errorRaw</code>.</li>
-      <li>Phone numbers use international format without <code>+</code>, for example <code>919876543210</code>.</li>
-      <li>Rate limits: list reads 600 per 15 min, analytics 60 per 15 min, key management 20 per 15 min. Sends are not limited this way.</li>
-    </ul>
-
-    <h3>Authentication</h3>
-    <ul>
-      <li>Create a key under <strong>Settings → API Key / Dev tools</strong>. The full key is shown only once.</li>
-      <li>Send it as <code>Authorization: Bearer hk_live_…</code></li>
-      <li>Scopes are <code>resource:action</code>, such as <code>messages:write</code>. A call outside the key's scope returns <code>403</code>.</li>
-      <li>Presets: <strong>Full access</strong> and <strong>Read-only</strong>.</li>
-    </ul>
-
-    <pre><code>curl -X GET "https://api.heltar.com/v1/clients?limit=5" \
-  -H "Authorization: Bearer hk_live_xxxxxxxx"</code></pre>
-
-    <div class="exercise">
-      <strong>Practice exercises</strong>
-      <label><input type="checkbox" data-ex="1-1"> Create a read-only key.</label>
-      <label><input type="checkbox" data-ex="1-2"> Call <code>GET /v1/clients?limit=5</code> and confirm a 200 response.</label>
-      <label><input type="checkbox" data-ex="1-3"> Call <code>POST /v1/messages/send</code> with that key and confirm you get <code>403</code>.</label>
+  <section class="module" id="m1" data-module="m1">
+    <div class="module-head">
+      <h2>Module 1: Foundations and Authentication</h2>
+      <span class="badge">Complete</span>
     </div>
 
-    <p><strong>Reference:</strong> <a href="/docs/api">API Reference</a>, <a href="/docs/api/authentication">Authentication</a></p>
+    <h3>What this module is about</h3>
+    <div class="plain">
+      <p>Before your software can do anything, HeltarChat needs to know who is asking. The API key is your software's ID card. Every request you make must show it.</p>
+    </div>
+
+    <h3>The address you'll use</h3>
+    <p>All requests start with the same base address: <code>https://api.heltar.com/v1</code>. Each action adds a path to the end of it.</p>
+
+    <h3>Responses come in a standard wrapper</h3>
+    <p>Every answer from HeltarChat is wrapped in a standard package, called an envelope. Look at the status first (did it work?), then at the data inside.</p>
+
+    <h3>Rate limits: don't send too much too fast</h3>
+    <p>HeltarChat limits how many requests you can make in a short time. If you go over, you'll get an error. The fix is to wait briefly, then try again.</p>
+
+    <h3>Step by step: create an API key</h3>
+    <ol class="steps">
+      <li>Log in to the HeltarChat dashboard.</li>
+      <li>Open the developer or API settings area.</li>
+      <li>Choose <strong>Create API key</strong>.</li>
+      <li>Give it a clear name, such as "Test key".</li>
+      <li>Pick a preset. <strong>Read-only</strong> is safest while learning. <strong>Full access</strong> lets the key make changes too.</li>
+      <li>Copy the key immediately and store it somewhere safe. You may not be able to see it again.</li>
+    </ol>
+
+    <h3>Step by step: use the key in a request</h3>
+    <ol class="steps">
+      <li>Add a header to your request named <code>Authorization</code>.</li>
+      <li>Set its value to the word <code>Bearer</code>, a space, and your key.</li>
+      <li>Example: <code>Authorization: Bearer your-key-here</code></li>
+    </ol>
+
+    <div class="practice">
+      <h3>Practice</h3>
+      <label><input type="checkbox" class="ex" data-module="m1"> Create a Read-only API key and save it safely.</label>
+      <label><input type="checkbox" class="ex" data-module="m1"> Confirm a read request works with that key.</label>
+      <label><input type="checkbox" class="ex" data-module="m1"> Try a change request with the Read-only key and note that it is refused.</label>
+    </div>
+    <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Authentication</a></p>
   </section>
 
   <!-- MODULE 2 -->
-  <section class="module" id="m2" data-module="2">
-    <h2>Module 2: Messaging and Contacts API <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Send every message type and manage contacts programmatically.</div>
+  <section class="module" id="m2" data-module="m2">
+    <div class="module-head">
+      <h2>Module 2: Messaging and Contacts API</h2>
+      <span class="badge">Complete</span>
+    </div>
 
-    <h3>Sending messages</h3>
-    <ul>
-      <li>Supported <code>messageType</code> values: <code>text</code>, <code>media</code>, <code>template</code>, <code>interactive</code>, <code>contacts</code>, <code>location</code>, <code>reaction</code>.</li>
-      <li>Templates are required outside the 24-hour customer service window. Variables map to <code>{{1}}</code>, <code>{{2}}</code> by position.</li>
-      <li>Read <code>data.success</code> and <code>data.fail</code> carefully. Both are keyed by array position, so match results back to what you sent.</li>
-      <li>Use <code>refId</code> to correlate your own IDs.</li>
-    </ul>
+    <h3>What this module is about</h3>
+    <div class="plain">
+      <p>This is the everyday work: saving people as contacts, and sending them messages. Contacts come first, because you can't message someone who isn't saved.</p>
+    </div>
 
-    <h3>Media workflow</h3>
-    <ol>
-      <li><code>GET /v1/messages/presigned-url?file_name=…&amp;file_type=…</code></li>
-      <li><code>PUT</code> the file to <code>signedRequest</code> (expires after one hour).</li>
-      <li>Send the message with the returned <code>url</code>.</li>
-    </ol>
+    <h3>Message types</h3>
+    <p>A message can be plain text or include media such as an image or PDF. For media, you first upload the file, then refer to it in your message. Think of it as attaching a file to an email, but in two steps.</p>
+
+    <h3>Reading the send result</h3>
+    <div class="plain">
+      <p>When you send to several people, the reply is split into two lists: <strong>success</strong> and <strong>fail</strong>. Each entry is numbered by its position in your original list. So the first recipient you sent to is position 1 in the reply. Match by position to know who got it.</p>
+    </div>
 
     <h3>Contacts</h3>
     <ul>
-      <li><code>POST /v1/clients</code> creates or upserts in bulk. Attributes merge key by key.</li>
-      <li>Attribute types: <code>text</code>, <code>numerical</code>, <code>dropdown</code>, <code>tags</code>. Define non-text types first with <code>POST /v1/business/attributes</code>.</li>
-      <li>Pagination is keyset-based: pass <code>nextCursor</code> back as <code>cursor</code> until it is <code>null</code>.</li>
-    </ul>
-
-    <div class="exercise">
-      <strong>Practice exercises</strong>
-      <label><input type="checkbox" data-ex="2-1"> Import 20 contacts with a <code>tier</code> dropdown attribute (silver, gold).</label>
-      <label><input type="checkbox" data-ex="2-2"> Send each contact a template with a script.</label>
-      <label><input type="checkbox" data-ex="2-3"> Print the successes and failures from the response.</label>
-    </div>
-
-    <p><strong>Reference:</strong> <a href="/docs/api/messages">Messages</a>, <a href="/docs/api/contacts">Contacts</a></p>
-  </section>
-
-  <!-- MODULE 3 -->
-  <section class="module" id="m3" data-module="3">
-    <h2>Module 3: Campaigns, Templates and Scheduling <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Run bulk campaigns reliably and manage the template lifecycle.</div>
-
-    <h3>Templates</h3>
-    <ul>
-      <li>Categories: <code>UTILITY</code>, <code>MARKETING</code>, <code>AUTHENTICATION</code>. Components must include <code>BODY</code>.</li>
-      <li>Statuses: <code>PENDING</code>, <code>APPROVED</code>, <code>REJECTED</code>, <code>PAUSED</code>, <code>DISABLED</code>.</li>
-      <li>Editing replaces the whole component list, and approved templates go back to review.</li>
-      <li>Pause all marketing sends with <code>PUT /v1/business/pause-marketing-templates</code>.</li>
-    </ul>
-
-    <h3>Campaigns</h3>
-    <ul>
-      <li>Small batches go in <code>messages</code>. Large ones use an NDJSON file, one recipient per line, referenced by <code>finalPayloadFileUrl</code> with <code>recipientCount</code>.</li>
-      <li>Track counts with <code>GET /v1/campaigns/get-one/:id</code>. Per-recipient status is at <code>GET /v1/campaigns/:id</code>.</li>
-    </ul>
-
-    <h3>Scheduling</h3>
-    <ul>
-      <li>Schedule a message, campaign or nudge with a Unix timestamp no more than two years ahead.</li>
-      <li>Scheduling a nudge cancels pending nudges for the same contact and bot.</li>
-    </ul>
-
-    <div class="exercise">
-      <strong>Practice exercises</strong>
-      <label><input type="checkbox" data-ex="3-1"> Create a UTILITY template and wait for approval.</label>
-      <label><input type="checkbox" data-ex="3-2"> Schedule a campaign 10 minutes ahead to two test numbers.</label>
-      <label><input type="checkbox" data-ex="3-3"> Poll <code>get-one</code> until <code>statsSent</code> matches <code>statsTotal</code>.</label>
-    </div>
-
-    <p><strong>Reference:</strong> <a href="/docs/api/templates">Templates</a>, <a href="/docs/api/campaigns">Campaigns</a>, <a href="/docs/api/schedule">Schedule</a></p>
-  </section>
-
-  <!-- MODULE 4 -->
-  <section class="module" id="m4" data-module="4">
-    <h2>Module 4: Webhooks and Real-Time Events <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Receive and process events reliably.</div>
-
-    <h3>Setup</h3>
-    <ul>
-      <li>Configure URLs with <code>POST /v1/business/webhook-url</code>. Each URL subscribes to one field type.</li>
-      <li>Use <code>headers</code> to send a static shared secret, since there is no signature header.</li>
-    </ul>
-
-    <h3>Payload discrimination</h3>
-    <table>
-      <tr><th>Event</th><th>Where it arrives</th></tr>
-      <tr><td>Inbound customer message</td><td><code>value.messages[]</code></td></tr>
-      <tr><td>Status change (sent, delivered, read, failed)</td><td><code>value.statuses[]</code></td></tr>
-      <tr><td>Payment</td><td>Status with <code>"type": "payment"</code></td></tr>
-      <tr><td>Call event</td><td><code>"field": "calls"</code></td></tr>
-    </table>
-
-    <h3>Reliability rules</h3>
-    <ul>
-      <li>Respond <code>200</code> within 10 seconds. Process asynchronously.</li>
-      <li>Only network errors, timeouts and <code>5xx</code> are retried, up to 5 times over roughly 4 to 5 hours. Sort by payload timestamps, not arrival time.</li>
-      <li>Deduplicate on <code>(wamid, status)</code>.</li>
-      <li>After about 100 consecutive failures the webhook is disabled. Re-enable it with the configure endpoint.</li>
-    </ul>
-
-    <div class="exercise">
-      <strong>Practice exercises</strong>
-      <label><input type="checkbox" data-ex="4-1"> Expose a local server with ngrok and subscribe to <code>metaWebhooks</code>.</label>
-      <label><input type="checkbox" data-ex="4-2"> Send yourself a text and log the inbound message.</label>
-      <label><input type="checkbox" data-ex="4-3"> Log the <code>delivered</code> and <code>read</code> statuses that follow.</label>
-    </div>
-
-    <p><strong>Reference:</strong> <a href="/docs/api/webhooks">Webhooks</a>, <a href="/docs/guides/custom-data-in-webhooks">Custom Data in Webhooks</a></p>
-  </section>
-
-  <!-- MODULE 5 -->
-  <section class="module" id="m5" data-module="5">
-    <h2>Module 5: Guides in Practice <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Apply the three guides to real workflows.</div>
-
-    <h3>Custom data in webhooks</h3>
-    <ul>
-      <li>Attach <code>integrations: [{ name: "metaCustomFieldHook", customField: {...} }]</code> to a template send.</li>
-      <li>The returned <code>customField</code> lets you map every receipt back to your own order ID.</li>
-    </ul>
-
-    <h3>Receiving media</h3>
-    <ul>
-      <li>Inbound media arrives as an ID. Fetch <code>GET /v1/messages?wamid=…</code>.</li>
-      <li><code>awsLink</code> may be empty for a few seconds. Retry about three times at five-second intervals.</li>
-    </ul>
-
-    <h3>Custom domain for link tracker</h3>
-    <ul>
-      <li>Use an unused subdomain such as <code>links.yourbrand.com</code>. Never the root domain.</li>
-      <li>Add the verification CNAME exactly as sent. Don't duplicate your domain in the Name field.</li>
-      <li>Set Cloudflare records to DNS only. Keep the verification record forever, because renewal depends on it.</li>
-    </ul>
-
-    <div class="exercise">
-      <strong>Capstone</strong>
-      <label><input type="checkbox" data-ex="5-1"> Send an order-confirmation template with an order ID in <code>customField</code>, using a branded tracking link.</label>
-      <label><input type="checkbox" data-ex="5-2"> Use status webhooks to update your own record when the message is read or clicked.</label>
-    </div>
-
-    <p><strong>Reference:</strong> <a href="/docs/guides">Guides</a></p>
-  </section>
-
-  <!-- MODULE 6 -->
-  <section class="module" id="m6" data-module="6">
-    <h2>Module 6: Integrations <span class="done-badge">Complete</span></h2>
-    <div class="goal"><strong>Goal:</strong> Connect third-party platforms and know which webhook field each uses.</div>
-
-    <table>
-      <tr><th>Integration</th><th>What it does</th><th>Key webhook field</th></tr>
-      <tr><td>WebEngage</td><td>Journeys send WhatsApp; status returns</td><td><code>webEngageStatus</code></td></tr>
-      <tr><td>CleverTap</td><td>Campaigns send WhatsApp; templates import</td><td><code>cleverTapStatus</code>, <code>cleverTapMessages</code></td></tr>
-      <tr><td>MoEngage</td><td>Campaigns, journeys and replies</td><td><code>moEngage</code></td></tr>
-      <tr><td>Web chat widget</td><td>In-page chat in the same inbox</td><td>Inbox (no webhook)</td></tr>
-      <tr><td>Embedded agent chat</td><td>Agents chat with a lead inside your CRM</td><td>None</td></tr>
-      <tr><td>Amazon S3 export</td><td>CSV of status changes every 10 minutes</td><td>None</td></tr>
-    </table>
-
-    <h3>Key concepts</h3>
-    <ul>
-      <li>The embed <code>embedUrl</code> is single-use and expires after 24 hours. Never put the API key in the browser.</li>
-      <li>Web widget identity verification signs <code>visitor.id</code> on your server with HMAC-SHA256.</li>
-      <li>For S3, treat the table as append-only and keep the row with the newest <code>updated_at</code> per <code>message_id</code>.</li>
-    </ul>
-
-    <div class="exercise">
-      <strong>Practice exercises</strong>
-      <label><input type="checkbox" data-ex="6-1"> Set up one integration against a test account.</label>
-      <label><input type="checkbox" data-ex="6-2"> Send one message through it.</label>
-      <label><input type="checkbox" data-ex="6-3"> Write a short paragraph on which webhook field carries the status back and why.</label>
-    </div>
-
-    <p><strong>Reference:</strong> <a href="/docs/integrations">Integrations</a>, <a href="/docs/integrations/web-widget">Web chat widget</a>, <a href="/docs/integrations/embedded-chat">Embedded agent chat</a>, <a href="/docs/integrations/amazon-s3-export">Amazon S3 export</a></p>
-  </section>
-
-  <!-- FINAL ASSESSMENT -->
-  <section class="module quiz" id="quiz">
-    <h2>Final Assessment</h2>
-    <p>Try each question first, then open the answer.</p>
-
-    <details>
-      <summary>1. Why does a 200 response to <code>POST /v1/messages/send</code> not guarantee delivery?</summary>
-      <p>The 200 means the message was accepted. Delivery is reported later through <code>sent</code>, <code>delivered</code>, <code>read</code> and <code>failed</code> status webhooks.</p>
-    </details>
-    <details>
-      <summary>2. What happens after roughly 100 consecutive failed webhook deliveries?</summary>
-      <p>The webhook is disabled automatically and you are notified. Re-enable it with the configure endpoint once your endpoint is healthy.</p>
-    </details>
-    <details>
-      <summary>3. Which field tells you whether a webhook payload is a customer message or a status update?</summary>
-      <p>Look at which array is present: <code>value.messages[]</code> for inbound customer messages, <code>value.statuses[]</code> for status updates.</p>
-    </details>
-    <details>
-      <summary>4. Why must the web widget signature be computed on the server?</summary>
-      <p>The HMAC secret must stay private. If it is computed in the browser, anyone can read it and forge signatures for any visitor id.</p>
-    </details>
-    <details>
-      <summary>5. Why must the Cloudflare verification record be DNS only?</summary>
-      <p>A proxied (orange cloud) record hides the real value, which blocks both certificate verification and the final link setup.</p>
-    </details>
-
-    <button class="reset" id="resetBtn">Reset progress</button>
-  </section>
-</main>
-
-<footer>Built for learning the HeltarChat API. Progress is saved in this browser only.</footer>
-
-<script>
-  const modules = document.querySelectorAll('section.module[data-module]');
-  const checkboxes = document.querySelectorAll('input[data-ex]');
-  const STORAGE_KEY = 'heltarchat-course-progress';
-
-  function loadState() {
-    try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    } catch (e) {
-      return {};
-    }
-  }
-
-  function saveState(state) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    } catch (e) {}
-  }
-
-  function render() {
-    const state = loadState();
-    let completed = 0;
-
-    checkboxes.forEach(cb => {
-      cb.checked = !!state[cb.dataset.ex];
-    });
-
-    modules.forEach(sec => {
-      const id = sec.dataset.module;
-      const boxes = sec.querySelectorAll('input[data-ex]');
-      const allDone = boxes.length > 0 && [...boxes].every(b => b.checked);
-      sec.classList.toggle('done', allDone);
-      if (allDone) completed++;
-    });
-
-    const pct = Math.round((completed / modules.length) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressText').textContent =
-      completed + ' of ' + modules.length + ' modules complete';
-  }
-
-  checkboxes.forEach(cb => {
-    cb.addEventListener('change', () => {
-      const state = loadState();
-      state[cb.dataset.ex] = cb.checked;
-      saveState(state);
-      render();
-    });
-  });
-
-  document.getElementById('resetBtn').addEventListener('click', () => {
-    if (confirm('Clear all progress?')) {
-      saveState({});
-      render();
-    }
-  });
-
-  render();
-</script>
-
-</body>
-</html>
+      <li><strong>Upsert</strong> means "create if new, update if it exists". You never need to check first.</li>
+      <li><strong>Attributes</strong> are extra details you store on a contact, such as city or plan type.</li>
