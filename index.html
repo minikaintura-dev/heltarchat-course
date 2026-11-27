@@ -70,6 +70,10 @@
     line-height: 1.6rem; font-size: 0.85rem; font-weight: 600;
   }
   code { background: #eef3f1; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.9em; }
+  pre {
+    background: #1f2a27; color: #e8f1ee; padding: 1rem; border-radius: 8px;
+    overflow-x: auto; font-size: 0.85rem;
+  }
   ul { padding-left: 1.25rem; }
   li { margin-bottom: 0.35rem; }
   .practice {
@@ -137,6 +141,8 @@
     <a href="#m4" data-page="m4">4. Getting automatic updates <span class="tick"></span></a>
     <a href="#m5" data-page="m5">5. Practical tasks <span class="tick"></span></a>
     <a href="#m6" data-page="m6">6. Connecting other tools <span class="tick"></span></a>
+    <div class="group">Reference</div>
+    <a href="#api" data-page="api">API reference</a>
     <div class="group">Wrap up</div>
     <a href="#assessment" data-page="assessment">Quick quiz</a>
   </nav>
@@ -504,6 +510,74 @@
         <label><input type="checkbox" class="ex" data-module="m6"> Confirm where a data export would be saved.</label>
       </div>
       <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Integrations</a></p>
+
+      <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
+    </section>
+
+    <!-- API REFERENCE -->
+    <section class="page" id="api" data-title="API reference">
+      <h2>API reference: how your software talks to HeltarChat</h2>
+      <p class="muted">You don't need to write code to understand this page. It shows what the messages look like.</p>
+
+      <h3>The address</h3>
+      <div class="plain">
+        <p>Every request starts with the same address: <code>https://api.heltar.com/v1</code>. Each action adds a path to the end, like a street address with a house name added.</p>
+      </div>
+
+      <h3>A request has four parts</h3>
+      <ul>
+        <li><strong>Method:</strong> what you want to do. <code>GET</code> means "fetch", <code>POST</code> means "send or create", and <code>PATCH</code> or <code>PUT</code> means "change".</li>
+        <li><strong>Address:</strong> which action, such as <code>/messages</code>.</li>
+        <li><strong>Key:</strong> your API key, sent in a header.</li>
+        <li><strong>Body:</strong> the details, usually in a format called JSON.</li>
+      </ul>
+
+      <h3>JSON, the format used everywhere</h3>
+      <div class="plain">
+        <p>JSON is a way of writing details as labels and values. Curly braces <code>{ }</code> group them, and each label has a colon before its value. It's like a filled-in form.</p>
+      </div>
+      <pre>{
+  "name": "Priya Sharma",
+  "phone": "+919876543210",
+  "city": "Pune"
+}</pre>
+
+      <h3>Sending your key</h3>
+      <p>Each request includes your key in a header line. Think of it as showing your ID card at the door.</p>
+      <pre>Authorization: Bearer your-key-here</pre>
+
+      <h3>Reading a response</h3>
+      <p>HeltarChat replies in a standard wrapper. Look at the result first, then at the data inside it.</p>
+      <pre>{
+  "success": [ ... ],
+  "fail": [ ... ]
+}</pre>
+
+      <h3>Example: finding a message by its ID</h3>
+      <div class="example"><strong>Plain meaning:</strong> "Show me the message with this ID."</div>
+      <pre>GET https://api.heltar.com/v1/messages?wamid=ID_FROM_WEBHOOK</pre>
+      <p>The <code>wamid</code> is the unique ID that arrived with the customer's photo or file. Use it here to fetch the message.</p>
+
+      <h3>Example: sending messages</h3>
+      <div class="example"><strong>Plain meaning:</strong> "Send this message to these people."</div>
+      <p>The send action uses <code>POST</code> with a body listing the recipients and the message. Check the exact path for sending in the official documentation, because it isn't confirmed here.</p>
+      <p>The reply lists who received the message in <code>success</code> and who didn't in <code>fail</code>. Each entry is numbered by its place in your list.</p>
+
+      <h3>Example: the webhook news you receive</h3>
+      <div class="example"><strong>Plain meaning:</strong> "HeltarChat is telling your system something happened."</div>
+      <p>The news arrives in one of two sections. A customer message appears in <code>messages</code>. A delivery update appears in <code>statuses</code>.</p>
+      <pre>{
+  "messages": [ { "from": "+919876543210", "text": "Where is my order?" } ]
+}</pre>
+      <p>Your system should reply with a "got it" confirmation within 10 seconds, or HeltarChat may send the news again.</p>
+
+      <h3>Pages of results</h3>
+      <p>Long lists come in pages. Each page includes a <strong>cursor</strong>, a marker for the next page. Keep asking with that marker until no marker is returned.</p>
+
+      <h3>Status codes</h3>
+      <div class="plain">
+        <p><strong>200</strong> means the request worked. <strong>401</strong> usually means the key is missing or wrong. <strong>429</strong> means too many requests were sent too quickly, so wait and try again.</p>
+      </div>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
