@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HeltarChat Developer Course</title>
+<title>HeltarChat Course for Beginners</title>
 <style>
   :root {
     --green: #008069;
@@ -61,6 +61,7 @@
   .plain p:first-child { margin-top: 0; }
   .plain p:last-child { margin-bottom: 0; }
   .plain strong { color: var(--green-dark); }
+  .example { border-left: 4px solid #e07b00; background: #fff8ef; padding: 0.8rem 1rem; border-radius: 6px; margin: 0.75rem 0; }
   .steps { counter-reset: step; list-style: none; padding-left: 0; }
   .steps li { counter-increment: step; position: relative; padding-left: 2.2rem; margin-bottom: 0.6rem; }
   .steps li::before {
@@ -95,8 +96,7 @@
     background: var(--card); border: 1px solid var(--green); color: var(--green-dark);
     padding: 0.6rem 1.1rem; border-radius: 8px; font-size: 0.95rem; cursor: pointer;
   }
-  .pager button:hover:not(:disabled) { background: var(--green); color: #fff; }
-  .pager button:disabled { opacity: 0.35; cursor: default; }
+  .pager button:hover { background: var(--green); color: #fff; }
 
   .diagram { margin: 1.25rem 0; text-align: center; }
   .diagram svg { width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto; }
@@ -117,8 +117,8 @@
 <body>
 
 <header>
-  <h1>HeltarChat Developer Course</h1>
-  <p>Learn how to connect your own software to HeltarChat, one step at a time. No prior experience needed.</p>
+  <h1>HeltarChat Course for Beginners</h1>
+  <p>Learn how your own software can send WhatsApp messages through HeltarChat. No technical background needed.</p>
   <div class="progress-wrap">
     <div class="progress-label"><span id="progress-text">0 of 6 modules complete</span></div>
     <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -131,14 +131,14 @@
     <a href="#start" data-page="start">Start here</a>
     <a href="#glossary" data-page="glossary">Glossary</a>
     <div class="group">Modules</div>
-    <a href="#m1" data-page="m1">1. Foundations <span class="tick"></span></a>
-    <a href="#m2" data-page="m2">2. Messages &amp; Contacts <span class="tick"></span></a>
-    <a href="#m3" data-page="m3">3. Campaigns <span class="tick"></span></a>
-    <a href="#m4" data-page="m4">4. Webhooks <span class="tick"></span></a>
-    <a href="#m5" data-page="m5">5. Guides <span class="tick"></span></a>
-    <a href="#m6" data-page="m6">6. Integrations <span class="tick"></span></a>
+    <a href="#m1" data-page="m1">1. Permission keys <span class="tick"></span></a>
+    <a href="#m2" data-page="m2">2. Contacts and messages <span class="tick"></span></a>
+    <a href="#m3" data-page="m3">3. Sending to many people <span class="tick"></span></a>
+    <a href="#m4" data-page="m4">4. Getting automatic updates <span class="tick"></span></a>
+    <a href="#m5" data-page="m5">5. Practical tasks <span class="tick"></span></a>
+    <a href="#m6" data-page="m6">6. Connecting other tools <span class="tick"></span></a>
     <div class="group">Wrap up</div>
-    <a href="#assessment" data-page="assessment">Final assessment</a>
+    <a href="#assessment" data-page="assessment">Quick quiz</a>
   </nav>
 
   <main>
@@ -147,72 +147,64 @@
     <section class="page" id="start" data-title="Start here">
       <h2>Start here</h2>
       <div class="plain">
-        <p><strong>What is HeltarChat?</strong> HeltarChat sends and receives WhatsApp messages for businesses. This course teaches you how your own software can talk to HeltarChat, so messages, contacts, and campaigns can happen automatically.</p>
-        <p><strong>What is an API?</strong> An API (Application Programming Interface) is a set of rules that lets one program ask another program to do something. Think of it like a restaurant menu: you pick an item, the kitchen prepares it, and you get it back. You never need to see the kitchen.</p>
-        <p><strong>What do I need?</strong> A HeltarChat account, access to its dashboard, and a basic idea of how to copy and paste text. Some modules involve a developer; the notes say so when that applies.</p>
+        <p><strong>What is HeltarChat?</strong> HeltarChat is a service that sends and receives WhatsApp messages for businesses. Instead of typing every message by hand, a business can connect its own software to HeltarChat.</p>
+        <p><strong>What is "your software"?</strong> It could be an online shop, a clinic's booking system, or a spreadsheet that holds customer details. Anything that can make a request to a web service.</p>
+        <p><strong>What is an API?</strong> An API is a set of rules that lets two programs talk to each other. It works like a restaurant menu: you choose what you want, the kitchen makes it, and it comes back to you. You never need to see the kitchen.</p>
       </div>
-      <p class="muted">Start with the Glossary if terms feel unfamiliar, then work through the modules in order.</p>
+      <div class="example"><strong>Example:</strong> An online shop wants to message a customer when their order ships. The shop's software asks HeltarChat to send the message. That request is the whole idea of this course.</div>
+      <p class="muted">Each module has a short explanation, simple steps, and practice items. Start with the Glossary if you come across unfamiliar words.</p>
       <div class="pager"><span></span><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- GLOSSARY -->
     <section class="page" id="glossary" data-title="Glossary">
       <h2>Glossary: words you'll see</h2>
-      <p class="muted">Come back here any time a term is unfamiliar.</p>
+      <p class="muted">Come back here any time a word is unfamiliar.</p>
       <dl>
         <dt>API</dt>
-        <dd>A set of rules that lets one program request actions or information from another.</dd>
+        <dd>Rules that let one program ask another program to do something, like a menu for software.</dd>
         <dt>API key</dt>
-        <dd>A long secret code that identifies your software to HeltarChat. Treat it like a password: never share it or put it in a public web page.</dd>
-        <dt>Bearer token</dt>
-        <dd>The way you attach your API key to a request. It's sent in a header line that begins with the word <code>Authorization</code>.</dd>
-        <dt>Endpoint</dt>
-        <dd>A specific web address for one action, such as sending a message. Example: <code>https://api.heltar.com/v1</code> plus a path.</dd>
-        <dt>Scope</dt>
-        <dd>A permission attached to an API key. A read-only key can look things up but cannot change anything.</dd>
-        <dt>Payload</dt>
-        <dd>The data inside a request or message: the recipient, the text, and so on.</dd>
-        <dt>JSON</dt>
-        <dd>A common format for structured data, written as labels and values in curly braces. Most API data uses it.</dd>
+        <dd>A secret code that identifies your software. Treat it like a password.</dd>
+        <dt>Read-only key</dt>
+        <dd>A key that can look up information but cannot send messages or change anything.</dd>
+        <dt>Request</dt>
+        <dd>A message your software sends to HeltarChat asking for something, such as "send this text."</dd>
         <dt>Webhook</dt>
-        <dd>A notification HeltarChat sends <em>to</em> your software when something happens, such as a new incoming message. It's like a doorbell instead of you checking the door every few seconds.</dd>
-        <dt>WAMID</dt>
-        <dd>A unique ID WhatsApp gives each message. You use it to look up a specific message later.</dd>
+        <dd>A notification HeltarChat sends to your software when something happens. Like a doorbell: you don't have to keep checking the door.</dd>
+        <dt>Contact</dt>
+        <dd>A saved person in HeltarChat, usually identified by their phone number.</dd>
         <dt>Template</dt>
-        <dd>A pre-approved message format used for business campaigns. WhatsApp requires approval before a template can be sent.</dd>
+        <dd>A business message that WhatsApp has approved in advance. Business messages to customers usually need one.</dd>
         <dt>Campaign</dt>
-        <dd>A message sent to a list of people, usually as a single batch.</dd>
-        <dt>Message vs. status</dt>
-        <dd>A <em>message</em> is something a customer said to you. A <em>status</em> is an update on something you sent, such as "delivered" or "read".</dd>
-        <dt>HMAC</dt>
-        <dd>A fingerprint made from your secret key and some data. It proves a request really came from you. It must be created on a server, because a browser would expose your secret.</dd>
-        <dt>CNAME</dt>
-        <dd>A DNS record that points one domain name to another. Used here to verify that you own a domain.</dd>
-        <dt>DNS only</dt>
-        <dd>A setting on a DNS record that stops a service such as Cloudflare from hiding the real record. Verification fails if it's turned off.</dd>
+        <dd>One message sent to a list of people at the same time.</dd>
+        <dt>Status update</dt>
+        <dd>A report on something you sent, such as "delivered" or "read".</dd>
         <dt>Pagination</dt>
-        <dd>Splitting a long list into pages. You request one page, then use a cursor (a bookmark) to get the next.</dd>
+        <dd>Long lists are split into pages. You get one page, then ask for the next.</dd>
+        <dt>Security code (HMAC)</dt>
+        <dd>A code made from your secret key that proves a request really came from you. It must be made on a server, because anything in a web browser can be seen by others.</dd>
+        <dt>Domain</dt>
+        <dd>Your web address, such as <code>yourshop.com</code>.</dd>
+        <dt>DNS</dt>
+        <dd>The phone book of the internet. It connects a web address to the place it lives.</dd>
       </dl>
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 1 -->
-    <section class="page" id="m1" data-module="m1" data-title="1. Foundations">
-      <h2>Module 1: Foundations and Authentication <span class="badge">Complete</span></h2>
+    <section class="page" id="m1" data-module="m1" data-title="1. Permission keys">
+      <h2>Module 1: Permission keys <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>Before your software can do anything, HeltarChat needs to know who is asking. The API key is your software's ID card. Every request you make must show it.</p>
+        <p>Before your software can send anything, HeltarChat needs to know it's allowed to. The <strong>API key</strong> is that permission.</p>
       </div>
 
-      <h3>The address you'll use</h3>
-      <p>All requests start with the same base address: <code>https://api.heltar.com/v1</code>. Each action adds a path to the end of it.</p>
+      <h3>An everyday comparison</h3>
+      <p>A hotel gives each guest a key card for their own room. Your software gets an API key to open HeltarChat's door. Anyone who holds the card can get in, so keep it private.</p>
 
-      <h3>Responses come in a standard wrapper</h3>
-      <p>Every answer from HeltarChat is wrapped in a standard package, called an envelope. Look at the status first (did it work?), then at the data inside.</p>
-
-      <h3>Rate limits: don't send too much too fast</h3>
-      <p>HeltarChat limits how many requests you can make in a short time. If you go over, you'll get an error. The fix is to wait briefly, then try again.</p>
+      <h3>Why you'd need it</h3>
+      <div class="example"><strong>Example:</strong> A clothing shop wants an automatic message when an order ships. Its software must show a valid key with every request. Without the key, HeltarChat ignores the request.</div>
 
       <h3>How a request works</h3>
       <div class="diagram">
@@ -231,13 +223,9 @@
           <line x1="172" y1="100" x2="422" y2="100" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah1)"/>
           <text x="297" y="88" text-anchor="middle" font-size="13" fill="#1f2a27">Request + API key</text>
           <line x1="422" y1="140" x2="172" y2="140" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah1)"/>
-          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">Response</text>
-          <circle r="7" fill="#008069">
-            <animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/>
-          </circle>
-          <circle r="7" fill="#e07b00">
-            <animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/>
-          </circle>
+          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">Answer back</text>
+          <circle r="7" fill="#008069"><animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/></circle>
+          <circle r="7" fill="#e07b00"><animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/></circle>
         </svg>
         <div class="controls">
           <button onclick="this.closest('.diagram').querySelector('svg').pauseAnimations()">Pause</button>
@@ -245,146 +233,149 @@
         </div>
       </div>
 
-      <h3>Step by step: create an API key</h3>
+      <h3>What you do</h3>
       <ol class="steps">
-        <li>Log in to the HeltarChat dashboard.</li>
-        <li>Open the developer or API settings area.</li>
-        <li>Choose <strong>Create API key</strong>.</li>
-        <li>Give it a clear name, such as "Test key".</li>
-        <li>Pick a preset. <strong>Read-only</strong> is safest while learning. <strong>Full access</strong> lets the key make changes too.</li>
-        <li>Copy the key immediately and store it somewhere safe. You may not be able to see it again.</li>
+        <li>Log in to your HeltarChat account on the website.</li>
+        <li>Look for a section named <strong>Developers</strong>, <strong>API</strong>, or <strong>Integrations</strong>. The name may differ slightly.</li>
+        <li>Create a new key and name it something clear, such as "My test key".</li>
+        <li>Choose <strong>Read-only</strong>. This is the safe choice while you learn.</li>
+        <li>Copy the key and save it in a password manager or other private place.</li>
       </ol>
 
-      <h3>Step by step: use the key in a request</h3>
-      <ol class="steps">
-        <li>Add a header to your request named <code>Authorization</code>.</li>
-        <li>Set its value to the word <code>Bearer</code>, a space, and your key.</li>
-        <li>Example: <code>Authorization: Bearer your-key-here</code></li>
-      </ol>
+      <h3>What you should see</h3>
+      <p>A long string of random letters and numbers. You can usually see the full key only once, so copy it before you close the page.</p>
+
+      <h3>If something goes wrong</h3>
+      <p>If you can't find the developer section, your account may not have that access yet. Ask whoever set up your HeltarChat account, or contact HeltarChat support.</p>
 
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m1"> Create a Read-only API key and save it safely.</label>
-        <label><input type="checkbox" class="ex" data-module="m1"> Confirm a read request works with that key.</label>
-        <label><input type="checkbox" class="ex" data-module="m1"> Try a change request with the Read-only key and note that it is refused.</label>
+        <label><input type="checkbox" class="ex" data-module="m1"> Create a Read-only key and save it somewhere private.</label>
+        <label><input type="checkbox" class="ex" data-module="m1"> Explain in your own words why the key must stay secret.</label>
+        <label><input type="checkbox" class="ex" data-module="m1"> Find the place where you would see or revoke your keys.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Authentication</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Authentication</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 2 -->
-    <section class="page" id="m2" data-module="m2" data-title="2. Messages &amp; Contacts">
-      <h2>Module 2: Messaging and Contacts API <span class="badge">Complete</span></h2>
+    <section class="page" id="m2" data-module="m2" data-title="2. Contacts and messages">
+      <h2>Module 2: Contacts and messages <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>This is the everyday work: saving people as contacts, and sending them messages. Contacts come first, because you can't message someone who isn't saved.</p>
+        <p>Most of your daily work is saving people as <strong>contacts</strong> and sending them messages. You save the contact first, because HeltarChat needs to know who a person is before it can message them.</p>
       </div>
 
-      <h3>Message types</h3>
-      <p>A message can be plain text or include media such as an image or PDF. For media, you first upload the file, then refer to it in your message. Think of it as attaching a file to an email, but in two steps.</p>
+      <h3>An everyday comparison</h3>
+      <p>Saving a contact is like adding someone to your phone's address book. If the name already exists, you update it instead of creating a duplicate. HeltarChat calls this an <strong>upsert</strong>: "add if new, update if it exists."</p>
 
-      <h3>Reading the send result</h3>
-      <div class="plain">
-        <p>When you send to several people, the reply is split into two lists: <strong>success</strong> and <strong>fail</strong>. Each entry is numbered by its position in your original list. So the first recipient you sent to is position 1 in the reply. Match by position to know who got it.</p>
-      </div>
+      <h3>Sending a message</h3>
+      <p>A message can be plain text, or it can include a file such as a photo or PDF. To send a file, your software first uploads it, then refers to it in the message. It's like attaching a file to an email, done in two steps.</p>
 
-      <h3>Contacts</h3>
-      <ul>
-        <li><strong>Upsert</strong> means "create if new, update if it exists". You never need to check first.</li>
-        <li><strong>Attributes</strong> are extra details you store on a contact, such as city or plan type.</li>
-        <li><strong>Pagination</strong> lets you read a large contact list in chunks. Use the cursor from each page to get the next one, and stop when no cursor comes back.</li>
-      </ul>
+      <h3>Reading the results</h3>
+      <div class="example"><strong>Example:</strong> You send a message to three customers. HeltarChat replies with two lists: <strong>success</strong> and <strong>fail</strong>. Each item is numbered by its place in your original list. Item 1 is your first customer, item 2 is your second, and so on. That's how you know who received it.</div>
 
-      <h3>Step by step: save a contact</h3>
+      <h3>Long lists</h3>
+      <p>If you have thousands of contacts, HeltarChat returns them in pages. Each page comes with a bookmark (a <strong>cursor</strong>) that points to the next page. Keep asking for the next page until no bookmark comes back.</p>
+
+      <h3>What you do</h3>
       <ol class="steps">
-        <li>Prepare the phone number with the country code, such as <code>+91...</code>.</li>
-        <li>Send an upsert request with the number and any attributes.</li>
-        <li>Send the same request again with one attribute changed.</li>
-        <li>Check the contact in the dashboard to confirm the change.</li>
+        <li>Write the customer's phone number with the country code, such as <code>+91</code> for India.</li>
+        <li>Save the contact with their name and any details you want to keep.</li>
+        <li>Save the same contact again with one detail changed.</li>
+        <li>Open the contact in your HeltarChat dashboard to confirm the change appeared.</li>
       </ol>
+
+      <h3>What you should see</h3>
+      <p>The contact appears once, not twice, and shows the updated detail.</p>
+
+      <h3>If something goes wrong</h3>
+      <p>If a number is rejected, check that it has the country code and no typing errors. A number without a country code is the most common cause.</p>
 
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m2"> Upsert a contact, then upsert it again with a changed attribute.</label>
-        <label><input type="checkbox" class="ex" data-module="m2"> Send a message to two recipients and match the success and fail results by position.</label>
-        <label><input type="checkbox" class="ex" data-module="m2"> Page through a contact list until no cursor is returned.</label>
+        <label><input type="checkbox" class="ex" data-module="m2"> Save a contact, then update one detail and confirm it changed.</label>
+        <label><input type="checkbox" class="ex" data-module="m2"> Send a message to two people and match the results to them by position.</label>
+        <label><input type="checkbox" class="ex" data-module="m2"> Explain in your own words why a long list comes in pages.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Messages and Contacts</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Messages and Contacts</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 3 -->
-    <section class="page" id="m3" data-module="m3" data-title="3. Campaigns">
-      <h2>Module 3: Campaigns, Templates and Scheduling <span class="badge">Complete</span></h2>
+    <section class="page" id="m3" data-module="m3" data-title="3. Sending to many people">
+      <h2>Module 3: Sending to many people <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>A campaign sends one message to many people. For business messages, WhatsApp requires a pre-approved <strong>template</strong>, so campaigns always start with choosing the right template.</p>
+        <p>A <strong>campaign</strong> sends one message to a list of people. For business messages, WhatsApp requires a <strong>template</strong> that has been approved in advance.</p>
       </div>
 
+      <h3>An everyday comparison</h3>
+      <p>A template is like a printed letter that has been checked by head office before branches can use it. You can fill in the customer's name, but you can't change the wording without a new approval.</p>
+
       <h3>Templates</h3>
-      <p>Each template has a category (for example, marketing or utility) and a status. Only approved templates can be used. If a template is still pending, it won't send.</p>
+      <p>Every template has a <strong>category</strong>, such as marketing or utility (order updates, for example). It also has a <strong>status</strong>. Only approved templates can be sent. If a template is still waiting for approval, it won't send.</p>
 
-      <h3>Sending to a list</h3>
-      <p>For a small list, put the recipients in your request. For a large list, use the NDJSON format, which is a file with one recipient per line. It's easy to create in a spreadsheet and export as a text file.</p>
-
-      <h3>Checking on a campaign</h3>
+      <h3>Small list or large list</h3>
       <ul>
-        <li>The <strong>get one</strong> request shows the campaign as a whole.</li>
-        <li>The <strong>per-recipient status</strong> request shows what happened to each person.</li>
+        <li><strong>Small list:</strong> put the recipients directly in your request.</li>
+        <li><strong>Large list:</strong> put them in a file with one person per line. You can prepare this in a spreadsheet and save it as a text file.</li>
+      </ul>
+
+      <h3>Checking how it went</h3>
+      <ul>
+        <li>The <strong>campaign summary</strong> shows the overall result.</li>
+        <li>The <strong>per-person status</strong> shows what happened to each recipient.</li>
       </ul>
 
       <h3>Scheduling</h3>
-      <p>You can schedule a campaign for a future date, up to two years ahead. Check the time zone carefully, because scheduled times are easy to get wrong.</p>
+      <p>You can set a campaign to send on a future date, up to two years ahead. Double-check the time zone, because a message scheduled for the wrong time is easy to do by accident.</p>
 
-      <h3>Step by step: plan a small campaign</h3>
+      <h3>What you do</h3>
       <ol class="steps">
-        <li>Pick an approved template and note its category.</li>
-        <li>List your recipients with their country codes.</li>
-        <li>Send the campaign, or schedule it for later.</li>
-        <li>Check the campaign status, then the per-recipient results.</li>
+        <li>Choose an approved template and note its category.</li>
+        <li>Prepare your recipient list with country codes.</li>
+        <li>Send now, or schedule the campaign for later.</li>
+        <li>Check the summary, then look at the per-person results.</li>
       </ol>
 
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m3"> Find an approved template and note its category.</label>
-        <label><input type="checkbox" class="ex" data-module="m3"> Prepare a small recipient file with one person per line.</label>
-        <label><input type="checkbox" class="ex" data-module="m3"> Schedule a campaign for a future date and check its status.</label>
+        <label><input type="checkbox" class="ex" data-module="m3"> Find an approved template and write down its category.</label>
+        <label><input type="checkbox" class="ex" data-module="m3"> Prepare a small list with one person per line.</label>
+        <label><input type="checkbox" class="ex" data-module="m3"> Schedule a campaign for a future date and check that the time is correct.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Campaigns</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Campaigns</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 4 -->
-    <section class="page" id="m4" data-module="m4" data-title="4. Webhooks">
-      <h2>Module 4: Webhooks and Real-Time Events <span class="badge">Complete</span></h2>
+    <section class="page" id="m4" data-module="m4" data-title="4. Getting automatic updates">
+      <h2>Module 4: Getting automatic updates <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>Instead of asking HeltarChat "any new messages?" over and over, you give it an address (a webhook URL). When something happens, HeltarChat sends the news to you straight away.</p>
+        <p>Instead of repeatedly asking HeltarChat "anything new?", you give it an address on your system. When something happens, HeltarChat sends the news to that address. This address is called a <strong>webhook</strong>.</p>
       </div>
 
-      <h3>Two kinds of notifications</h3>
+      <h3>An everyday comparison</h3>
+      <p>A webhook works like a doorbell. You don't keep checking the front door all day. You get on with your work, and the bell tells you when someone arrives.</p>
+
+      <h3>Two kinds of news</h3>
       <ul>
-        <li><strong><code>messages[]</code></strong> means a customer sent you something.</li>
-        <li><strong><code>statuses[]</code></strong> means an update on something you sent, such as delivered or read.</li>
+        <li><strong>A new message:</strong> a customer wrote to you.</li>
+        <li><strong>A status update:</strong> something you sent was delivered or read.</li>
       </ul>
-      <p>Check which one is present before you process a notification, so you handle each correctly.</p>
-
-      <h3>Rules to follow</h3>
-      <div class="plain">
-        <p><strong>Reply quickly.</strong> Your endpoint must answer with HTTP 200 within 10 seconds. If it takes longer, do the heavy work afterwards.</p>
-        <p><strong>Retries.</strong> If your endpoint fails, HeltarChat retries up to 5 times.</p>
-        <p><strong>Disabling.</strong> After about 100 failures in a row, the webhook is switched off. You'll need to fix it and turn it back on.</p>
-      </div>
+      <p>Your software should check which kind it received before handling it.</p>
 
       <h3>How a webhook arrives</h3>
       <div class="diagram">
-        <svg viewBox="0 0 600 230" role="img" aria-label="HeltarChat sends an event to your endpoint, and your endpoint replies 200 OK">
+        <svg viewBox="0 0 600 230" role="img" aria-label="HeltarChat sends an event to your system, and your system replies with a confirmation">
           <defs>
             <marker id="ah4" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
               <path d="M0,0 L10,5 L0,10 Z" fill="#5d6b67"/>
@@ -394,18 +385,14 @@
           <text x="95" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">HeltarChat</text>
           <text x="95" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">something happens</text>
           <rect x="425" y="75" width="155" height="80" rx="12" fill="#eef6f3" stroke="#008069" stroke-width="2"/>
-          <text x="502" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">Your endpoint</text>
-          <text x="502" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">your web address</text>
+          <text x="502" y="108" text-anchor="middle" font-size="16" font-weight="600" fill="#1f2a27">Your system</text>
+          <text x="502" y="130" text-anchor="middle" font-size="12" fill="#5d6b67">receives the news</text>
           <line x1="172" y1="100" x2="422" y2="100" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah4)"/>
-          <text x="297" y="88" text-anchor="middle" font-size="13" fill="#1f2a27">Event (webhook)</text>
+          <text x="297" y="88" text-anchor="middle" font-size="13" fill="#1f2a27">News (webhook)</text>
           <line x1="422" y1="140" x2="172" y2="140" stroke="#5d6b67" stroke-width="2" marker-end="url(#ah4)"/>
-          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">200 OK within 10 seconds</text>
-          <circle r="7" fill="#008069">
-            <animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/>
-          </circle>
-          <circle r="7" fill="#e07b00">
-            <animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/>
-          </circle>
+          <text x="297" y="162" text-anchor="middle" font-size="13" fill="#1f2a27">"Got it" confirmation</text>
+          <circle r="7" fill="#008069"><animateMotion dur="2.5s" repeatCount="indefinite" path="M172,100 L422,100"/></circle>
+          <circle r="7" fill="#e07b00"><animateMotion dur="2.5s" begin="1.5s" repeatCount="indefinite" path="M422,140 L172,140"/></circle>
         </svg>
         <div class="controls">
           <button onclick="this.closest('.diagram').querySelector('svg').pauseAnimations()">Pause</button>
@@ -413,123 +400,132 @@
         </div>
       </div>
 
-      <h3>Step by step: test your webhook</h3>
+      <h3>Two rules</h3>
+      <div class="plain">
+        <p><strong>Confirm quickly.</strong> Your system should send back a "got it" reply within 10 seconds. If it takes longer, HeltarChat assumes it failed and may send the news again.</p>
+        <p><strong>Failures add up.</strong> If your system keeps failing, HeltarChat stops sending to it after about 100 failures in a row. You'll need to fix the problem and switch the webhook back on.</p>
+      </div>
+
+      <h3>What you do</h3>
       <ol class="steps">
-        <li>Set up a web address that can receive notifications.</li>
-        <li>Register that address in the HeltarChat webhook settings.</li>
+        <li>Give your technical contact a web address that can receive news. They will set this up.</li>
+        <li>Enter that address in the webhook settings in HeltarChat.</li>
         <li>Send yourself a test message.</li>
-        <li>Confirm your endpoint logs the notification and returns 200.</li>
+        <li>Check that the news arrived and that the "got it" reply was sent.</li>
       </ol>
 
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m4"> Explain in your own words how to tell a message from a status.</label>
-        <label><input type="checkbox" class="ex" data-module="m4"> Confirm your endpoint replies with 200 quickly.</label>
-        <label><input type="checkbox" class="ex" data-module="m4"> Set up a way to be alerted when webhook failures happen.</label>
+        <label><input type="checkbox" class="ex" data-module="m4"> Explain in your own words the difference between a new message and a status update.</label>
+        <label><input type="checkbox" class="ex" data-module="m4"> Confirm that a test message arrived at your address.</label>
+        <label><input type="checkbox" class="ex" data-module="m4"> Agree with your technical contact how you will be alerted if the webhook fails.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Webhooks</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Webhooks</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 5 -->
-    <section class="page" id="m5" data-module="m5" data-title="5. Guides">
-      <h2>Module 5: Guides in Practice <span class="badge">Complete</span></h2>
+    <section class="page" id="m5" data-module="m5" data-title="5. Practical tasks">
+      <h2>Module 5: Practical tasks <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>These guides cover real tasks you're likely to need: storing your own information on contacts, receiving files customers send, and using your own domain for tracked links.</p>
+        <p>These are three common tasks that come up once you're live: adding your own information to contacts, receiving files from customers, and using your own website address for tracked links.</p>
       </div>
 
-      <h3>Storing your own data</h3>
-      <p>The <code>metaCustomFieldHook</code> lets you pass your own fields, such as an order number, into HeltarChat. Think of it as adding extra boxes to a form.</p>
+      <h3>Adding your own information</h3>
+      <p>You can attach your own details, such as an order number, to a contact. It's like adding extra boxes to a form. Your technical contact can set this up using a feature called <code>metaCustomFieldHook</code>.</p>
 
-      <h3>Receiving media from customers</h3>
-      <p>When a customer sends a photo or document, the notification tells you its WAMID (a unique message ID). Use <code>GET /v1/messages?wamid=</code> with that ID to fetch the message and its file.</p>
+      <h3>Receiving files from customers</h3>
+      <div class="example"><strong>Example:</strong> A customer sends you a photo of a damaged product. HeltarChat gives every message a unique ID, called a <strong>WAMID</strong>. Your software uses that ID to fetch the message and its photo.</div>
 
-      <h3>Custom link domain</h3>
-      <p>Tracked links can use your own domain instead of a generic one. You add the domain, then create a verification record (a CNAME) in your domain's DNS settings. That record must be set to <strong>DNS only</strong>, or verification will fail.</p>
+      <h3>Using your own web address for links</h3>
+      <p>Links you send can show your own website address, such as <code>links.yourshop.com</code>, instead of a generic one. This builds trust with customers.</p>
 
-      <h3>Step by step: add a link-tracking domain</h3>
+      <h3>What you do: set up a link address</h3>
       <ol class="steps">
-        <li>Open the link tracker settings in HeltarChat and add your domain.</li>
-        <li>Copy the verification record HeltarChat shows you.</li>
-        <li>In your domain provider's DNS settings, create that record.</li>
-        <li>If you use Cloudflare, set the record to <strong>DNS only</strong> (the grey cloud, not the orange one).</li>
+        <li>In HeltarChat, open the link settings and add the address you want to use.</li>
+        <li>HeltarChat shows you a short verification record. Copy it.</li>
+        <li>Log in to the company that manages your domain, and find its <strong>DNS</strong> settings (the place where web addresses are set up).</li>
+        <li>Create the record exactly as HeltarChat shows it.</li>
+        <li>If you use Cloudflare, set the record to <strong>DNS only</strong> (grey cloud, not orange). Otherwise verification fails.</li>
         <li>Return to HeltarChat and click verify.</li>
       </ol>
 
+      <h3>If something goes wrong</h3>
+      <p>Verification can take a while after you add a record. If it still fails after an hour or so, check that the record matches exactly and that it's set to DNS only.</p>
+
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m5"> Look up a received message by its WAMID.</label>
-        <label><input type="checkbox" class="ex" data-module="m5"> Add a custom field and confirm it appears on a contact.</label>
-        <label><input type="checkbox" class="ex" data-module="m5"> Add a link-tracker domain and create its DNS-only record.</label>
+        <label><input type="checkbox" class="ex" data-module="m5"> Find out where your customer's file reference (WAMID) is shown when a message arrives.</label>
+        <label><input type="checkbox" class="ex" data-module="m5"> Ask your technical contact to add one custom detail to a contact, and confirm it appears.</label>
+        <label><input type="checkbox" class="ex" data-module="m5"> Add a link address and complete the verification steps.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Guides</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Guides</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- MODULE 6 -->
-    <section class="page" id="m6" data-module="m6" data-title="6. Integrations">
-      <h2>Module 6: Integrations <span class="badge">Complete</span></h2>
+    <section class="page" id="m6" data-module="m6" data-title="6. Connecting other tools">
+      <h2>Module 6: Connecting other tools <span class="badge">Complete</span></h2>
 
-      <h3>What this module is about</h3>
+      <h3>What this is about</h3>
       <div class="plain">
-        <p>An integration connects HeltarChat to a tool you already use, so data flows between them without copying it by hand.</p>
+        <p>An <strong>integration</strong> connects HeltarChat to a tool you already use, so information moves between them automatically instead of being copied by hand.</p>
       </div>
 
-      <h3>Marketing platforms</h3>
+      <h3>An everyday comparison</h3>
+      <p>It's like a power adapter. Two devices can each work on their own, but the adapter lets them share a power supply without rewiring either one.</p>
+
+      <h3>Marketing tools</h3>
       <ul>
-        <li><strong>WebEngage:</strong> syncs message status through <code>webEngageStatus</code>.</li>
-        <li><strong>CleverTap:</strong> uses <code>cleverTapStatus</code> for status and <code>cleverTapMessages</code> for messages.</li>
-        <li><strong>MoEngage:</strong> connects through the <code>moEngage</code> integration.</li>
+        <li><strong>WebEngage, CleverTap, and MoEngage</strong> are marketing tools. Each one can receive message status updates from HeltarChat, so your marketing reports stay accurate.</li>
       </ul>
 
       <h3>Chat on your website or app</h3>
-      <div class="plain">
-        <p>You can add a chat widget to your website, or embed agent chat in your own app. For the widget, a security code (HMAC) must be created on your server. If it were created in the browser, anyone could see your secret.</p>
-      </div>
+      <div class="example"><strong>Example:</strong> A visitor to your website opens a chat box and talks to your team. The chat box connects to HeltarChat behind the scenes. A security code is needed so only your website can use it. That code must be created on your server, not in the visitor's browser, so it stays secret.</div>
 
-      <h3>Exporting data to Amazon S3</h3>
-      <p>S3 is online file storage. An export sends your HeltarChat data there, for analysis or backup.</p>
+      <h3>Storing data in the cloud</h3>
+      <p>Amazon S3 is online file storage. You can export your HeltarChat data there for backup or analysis.</p>
 
-      <h3>Step by step: connect a marketing platform</h3>
+      <h3>What you do: connect a tool</h3>
       <ol class="steps">
         <li>Open the integrations area in HeltarChat.</li>
-        <li>Choose your platform and follow its connection steps.</li>
-        <li>Send a test event and confirm it appears on the platform side.</li>
+        <li>Choose the tool you use and follow its connection steps.</li>
+        <li>Send a test and check that it appears in that tool.</li>
       </ol>
 
       <div class="practice">
         <h3>Practice</h3>
-        <label><input type="checkbox" class="ex" data-module="m6"> Explain in your own words why the widget security code must be made on a server.</label>
-        <label><input type="checkbox" class="ex" data-module="m6"> Choose one marketing platform and list the status events it needs.</label>
-        <label><input type="checkbox" class="ex" data-module="m6"> Set up an S3 export and confirm a file arrives.</label>
+        <label><input type="checkbox" class="ex" data-module="m6"> Explain in your own words why the security code must be made on a server.</label>
+        <label><input type="checkbox" class="ex" data-module="m6"> Name one marketing tool you use, and ask whether it could receive HeltarChat updates.</label>
+        <label><input type="checkbox" class="ex" data-module="m6"> Confirm where a data export would be saved.</label>
       </div>
-      <p class="docs-link"><a href="https://docs.heltar.com/">Full reference: Integrations</a></p>
+      <p class="docs-link"><a href="https://docs.heltar.com/">Official documentation: Integrations</a></p>
 
       <div class="pager"><button data-prev>&larr; Previous</button><button data-next>Next &rarr;</button></div>
     </section>
 
     <!-- ASSESSMENT -->
-    <section class="page" id="assessment" data-title="Final assessment">
-      <h2>Final Assessment</h2>
-      <p class="muted">Try to answer each question from memory, then open the answer to check.</p>
-      <details><summary>1. Why doesn't a 200 response to a send request guarantee the message was delivered?</summary>
-        <p>A 200 means HeltarChat accepted the request. Delivery happens afterwards, so track it with status webhooks or the per-recipient status request.</p>
+    <section class="page" id="assessment" data-title="Quick quiz">
+      <h2>Quick quiz</h2>
+      <p class="muted">Try to answer from memory, then open each answer to check.</p>
+      <details><summary>1. What is an API key, in one sentence?</summary>
+        <p>It's a secret code that proves your software has permission to use HeltarChat.</p>
       </details>
-      <details><summary>2. What happens after about 100 consecutive webhook failures?</summary>
-        <p>The webhook is switched off. Fix the endpoint and turn the webhook back on.</p>
+      <details><summary>2. Why doesn't a successful send mean the customer has read the message?</summary>
+        <p>A successful send means HeltarChat accepted it. Delivery and reading happen afterwards, and you find out through status updates.</p>
       </details>
-      <details><summary>3. How do you tell a customer message from a status update?</summary>
-        <p>Customer messages arrive in <code>messages[]</code>. Delivery updates arrive in <code>statuses[]</code>.</p>
+      <details><summary>3. How do you know if a message is from a customer or a status update?</summary>
+        <p>A customer message is news that someone wrote to you. A status update reports on something you sent, such as delivered or read.</p>
       </details>
-      <details><summary>4. Why must the web widget security code (HMAC) be created on the server?</summary>
-        <p>If it were created in the browser, your secret would be visible to anyone who views the page.</p>
+      <details><summary>4. Why must the security code be made on a server?</summary>
+        <p>If it were made in a web browser, anyone could see it and misuse your access.</p>
       </details>
-      <details><summary>5. Why must the verification CNAME be set to DNS only?</summary>
-        <p>A proxied record hides the real value, so verification can't read it and fails.</p>
+      <details><summary>5. Why must the verification record be set to DNS only?</summary>
+        <p>Cloudflare's proxy hides the real record, so HeltarChat can't see it and verification fails.</p>
       </details>
       <div class="pager"><button data-prev>&larr; Previous</button><span></span></div>
     </section>
@@ -579,7 +575,7 @@
     document.querySelectorAll("nav.menu a[data-page]").forEach(a => {
       a.classList.toggle("current", a.dataset.page === id);
     });
-    document.title = pages.find(p => p.id === id).dataset.title + " | HeltarChat Developer Course";
+    document.title = pages.find(p => p.id === id).dataset.title + " | HeltarChat Course";
     if (pushHash) history.replaceState(null, "", "#" + id);
     window.scrollTo({ top: 0, behavior: "instant" });
   }
